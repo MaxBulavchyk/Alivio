@@ -127,6 +127,7 @@ p {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    z-index: 3;
 }
 
 .header__buttons {
@@ -308,7 +309,7 @@ p {
 }
 
 .step__img:hover {
-    border: 1px solid var(--c-main);
+    outline: 1px solid var(--c-main);
     border-radius: 12px;
 }
 
@@ -448,16 +449,7 @@ p {
 }
 /* FOOTER END */
 
-.header .material-icons {
-    color: var(--c-main);
-    font-size: 60px;
-}
-
-input {
-    display: none;
-}
-
-label {
+#check-menu {
     display: none;
 }
 
@@ -465,10 +457,70 @@ label {
 @media (max-width: 1200px) {
     /* header */
     
-    label {
-        display: block;
+    .header__nav {
+        text-align: center;
+        position: fixed;
+        top: 110px;
+        left: 0;
+        width: 180px;
+        background: rgba(225, 225, 225, 0.7);
+        border-radius: 0 10px 10px 0;
+        transform: translateX(-200%);
+        transition: .3s all ease-in-out;
     }
     
+    .header__wrapper {
+        position: relative;
+    }
+
+    label {
+        display: block;
+        position: absolute;
+        width: 40px;
+        height: 100%;
+        cursor: pointer;
+        z-index: 2;
+    }
+
+    .burger-line {
+        position: absolute;
+        width: 40px;
+        height: 2px;
+        background-color: var(--c-main);
+    }
+
+    .header .line-first {
+        top: 15px;
+    }
+        
+    .header .line-second, .header .line-third {
+        top: 25px;
+    }
+        
+    .header .line-fourth {
+        top: 35px;
+    }
+        
+    #check-menu:checked ~ .header__nav {
+        transform: translateX(0);
+    }
+        
+    #check-menu:checked ~ .line-first {
+        display: none;
+    }
+        
+    #check-menu:checked ~ .line-second {
+        transform: rotate(45deg);
+    }
+        
+    #check-menu:checked ~ .line-third{
+        transform: rotate(-45deg);
+    }
+
+    #check-menu:checked ~ .line-fourth {
+        display: none;
+    }
+
     .header__logo {
         order: 0;
     }
@@ -477,31 +529,10 @@ label {
         order: 1;
     }
 
-    .menu {
-        order: 2;
-    }
-
-    .header__nav {
-        text-align: center;
-        position: fixed;
-        z-index: 3;
-        padding-top: 130px;
-        top: 0;
-        left: 0;
-        width: 180px;
-        background: rgba(225, 225, 225, 0.7);
-        border-radius: 0 0 20px 0;
-        transform: translateX(-200%);
-        transition: .3s all ease-in-out;
-    }
-
-    input:checked~.header__nav {
-        transform: translateX(0);
-    }
 
     .header .nav__ul {
         flex-direction: column;
-        margin: 0 0 20px 0;
+        margin: 20px 0 ;
     }
 
     /* main-screen */
@@ -620,4 +651,3 @@ label {
         display: none;
     }
 }
-
