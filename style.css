@@ -100,6 +100,7 @@ p {
 
 .btn_link {
     color: var(--c-black);
+    white-space: nowrap;
 }
 
 .btn_primary { 
@@ -107,6 +108,7 @@ p {
     background: var(--c-main);
     border: 1px solid var(--c-main);
     color: var(--c-white);
+    white-space: nowrap;
     transition: .2s all ease-in-out;
 }
 
@@ -155,7 +157,7 @@ p {
     text-decoration: none;
     font-family: var(--font-main);
     font-weight: 500;
-    font-size: 28px;
+    font-size: 20px;
     line-height: 24px;
     position: relative;
 }
@@ -229,7 +231,7 @@ p {
 
 /* HOW */
 .how {
-    padding-bottom: 392px;
+    margin-bottom: 200px;
 }
 
 .how-header {
@@ -315,6 +317,7 @@ p {
 
 .step__img img {
     max-width: 100%;
+    height: 100%;
 }
 /* STEP END*/
 
@@ -343,20 +346,6 @@ p {
     line-height: 157%;
     color: var(--c-white);
     margin-bottom: 33px;
-    text-shadow: 1px 1px 1px #919191,
-        1px 2px 1px #919191,
-        1px 3px 1px #919191,
-        1px 4px 1px #919191,
-        1px 5px 1px #919191,
-        1px 6px 1px #919191,
-        1px 7px 1px #919191,
-        1px 8px 1px #919191,
-        1px 9px 1px #919191,
-        1px 10px 1px #919191,
-    1px 18px 6px rgba(16,16,16,0.4),
-    1px 22px 10px rgba(16,16,16,0.2),
-    1px 25px 35px rgba(16,16,16,0.2),
-    1px 30px 60px rgba(16,16,16,0.4);
 }
 
 .story__desc {
@@ -386,8 +375,6 @@ p {
 
 .product__img img {
     max-width: 100%;
-    filter: grayscale(1);
-    transition: .3s;
 }
     
 .product__img img:hover {
@@ -439,6 +426,7 @@ p {
 }
 
 .footer .nav__ul {
+    
     gap: 68px;
 }
 
@@ -460,73 +448,67 @@ p {
     .header__nav {
         text-align: center;
         position: fixed;
-        top: 110px;
-        left: 0;
-        width: 180px;
+        top: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
         background: rgba(225, 225, 225, 0.7);
         border-radius: 0 10px 10px 0;
-        transform: translateX(-200%);
+        transform: translateY(-200%);
         transition: .3s all ease-in-out;
+        z-index: 2;
     }
     
     .header__wrapper {
         position: relative;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        align-items: center;
     }
 
     label {
         display: block;
         position: absolute;
-        width: 40px;
-        height: 100%;
+        width: 24px;
+        height: 20px;
+        top: 10px;
+        right: 35px;
         cursor: pointer;
-        z-index: 2;
+        z-index: 3;
     }
-
-    .burger-line {
+    .burger-lines {
         position: absolute;
-        width: 40px;
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        top: 10px;
+        right: 35px;
+    }
+    .burger-line {
+        width: 24px;
         height: 2px;
         background-color: var(--c-main);
     }
 
-    .header .line-first {
-        top: 15px;
-    }
-        
-    .header .line-second, .header .line-third {
-        top: 25px;
-    }
-        
-    .header .line-fourth {
-        top: 35px;
-    }
-        
     #check-menu:checked ~ .header__nav {
-        transform: translateX(0);
+        transform: translateY(0);
     }
-        
-    #check-menu:checked ~ .line-first {
+    
+    #check-menu:checked ~ .burger-lines .line-first {
         display: none;
     }
         
-    #check-menu:checked ~ .line-second {
-        transform: rotate(45deg);
+    #check-menu:checked ~ .burger-lines .line-second {
+        transform: translateY(12px) rotate(45deg);
+
     }
         
-    #check-menu:checked ~ .line-third{
-        transform: rotate(-45deg);
+    #check-menu:checked ~ .burger-lines .line-third{
+         transform: translateY(5px) rotate(-45deg);
     }
 
-    #check-menu:checked ~ .line-fourth {
+    #check-menu:checked ~ .burger-lines .line-fourth {
         display: none;
-    }
-
-    .header__logo {
-        order: 0;
-    }
-
-    .header__buttons {
-        order: 1;
     }
 
 
@@ -557,7 +539,7 @@ p {
 
     /* how */
     .how {
-        margin-bottom: 50px;
+        margin-bottom: 150px;
     }
 
     .how-header {
@@ -614,6 +596,20 @@ p {
 
 /* BREAKPOINT XL */
 @media (max-width: 720px) {
+    .btn_link {
+       display: none;
+    }
+
+    .btn_primary {
+        display: none;
+    }  
+
+    label {
+        top: 5px;
+    }
+    .burger-lines {
+        top: 5px;
+    }
 
     .main-screen {
         height: auto;
@@ -649,5 +645,8 @@ p {
 @media (max-width: 576px) {
     .header__buttons {
         display: none;
+    }
+    .how {
+        margin-bottom: 100px;
     }
 }
