@@ -426,7 +426,6 @@ p {
 }
 
 .footer .nav__ul {
-    
     gap: 68px;
 }
 
@@ -511,10 +510,11 @@ p {
         display: none;
     }
 
-
     .header .nav__ul {
         flex-direction: column;
-        margin: 20px 0 ;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
     }
 
     /* main-screen */
